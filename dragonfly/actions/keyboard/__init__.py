@@ -26,8 +26,6 @@ platform.
 import os
 import sys
 
-# TODO Implement classes for Wayland (XDG_SESSION_TYPE == "wayland").
-
 # Import the Keyboard, KeySymbols and Typeable classes for the current
 # platform. Always use the base classes for building documentation.
 doc_build = bool(os.environ.get("SPHINX_BUILD_RUNNING"))
@@ -51,6 +49,9 @@ elif os.environ.get("XDG_SESSION_TYPE") == "x11" and not doc_build:
     # libxdo does work and is a bit faster, but doesn't work with Python 3.
     # Unfortunately python-libxdo also hasn't been updated recently.
     # from ._x11_libxdo import LibxdoKeyboard as Keyboard
+
+elif os.environ.get("XDG_SESSION_TYPE") == "wayland" and not doc_build:
+    from ._pynput import Keyboard, Typeable, X11KeySymbols as KeySymbols
 
 else:
     # No keyboard implementation is available. Dragonfly can function

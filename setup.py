@@ -108,7 +108,7 @@ setup(
                         # "python-libxdo;platform_system=='Linux'",
                         # "Xlib;platform_system=='Linux'",
                         "psutil >= 5.5.1;platform_system=='Linux'",
-                        "pynput >= 1.4.2;platform_system=='Linux'",
+                        "pynput;platform_system=='Linux'",
 
                         # Mac OS dependencies.
                         "pynput >= 1.4.2;platform_system=='Darwin'",
@@ -120,7 +120,7 @@ setup(
                         "Werkzeug",
                         "requests",
                        ],
-
+dependency_links=['../pynput#egg=pynput-1.8'],
       extras_require={
           "sphinx": [
                      "sphinxwrapper >= 1.2.0",
